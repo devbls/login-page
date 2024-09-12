@@ -3,91 +3,24 @@ import { useState } from "react";
 import { FaArrowLeft, FaEnvelope, FaLock, FaUser } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
+import { Form } from "@/components/Login/Form";
+import { Input } from "@/components/Login/Input";
+import { Button } from "@/components/Login/Button";
+import { Checkbox } from "@/components/Login/Checkbox";
+
 export default function Home() {
-  const [register, setRegister] = useState(false);
+  const [formType, setFormType] = useState("login");
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-slate-200">
-      {register ? (
-        <form className="w-[28rem] p-12 bg-white border rounded-lg">
-          <div className="flex items-center">
-            <FaArrowLeft
-              size={21}
-              onClick={() => setRegister(false)}
-              className="cursor-pointer"
-            />
-            <b className="pl-6 text-3xl select-none">Register</b>
-          </div>
-          <label className="flex flex-col text-xs font-semibold relative mt-8">
-            Name*
-            <input
-              name="name"
-              placeholder="Enter your name"
-              required
-              className="h-9 font-normal border border-gray-300 focus-visible:border-blue-500 focus-visible:outline-none rounded-2xl px-3 mt-1 transition-colors"
-            />
-            <div className="absolute right-3 top-1/2 translate-y-1">
-              <FaUser color="#9ca3af" />
-            </div>
-          </label>
-          <label className="flex flex-col text-xs font-semibold relative mt-4">
-            Email*
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your e-mail"
-              required
-              className="h-9 font-normal border border-gray-300 focus-visible:border-blue-500 focus-visible:outline-none rounded-2xl px-3 mt-1 transition-colors"
-            />
-            <div className="absolute right-3 top-1/2 translate-y-1">
-              <FaEnvelope color="#9ca3af" />
-            </div>
-          </label>
-          <label className="flex flex-col text-xs mt-4 font-semibold relative">
-            Password*
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-              required
-              className="h-9 font-normal border border-gray-300 focus-visible:border-blue-500 focus-visible:outline-none rounded-2xl px-3 mt-1 transition-colors"
-            />
-            <div className="absolute right-3 top-1/2 translate-y-1">
-              <FaLock color="#9ca3af" />
-            </div>
-          </label>
-          <label className="flex flex-col text-xs mt-4 font-semibold relative">
-            Confirm password*
-            <input
-              type="password"
-              name="confirm-password"
-              placeholder="Confirm your password"
-              required
-              className="h-9 font-normal border border-gray-300 focus-visible:border-blue-500 focus-visible:outline-none rounded-2xl px-3 mt-1 transition-colors"
-            />
-            <div className="absolute right-3 top-1/2 translate-y-1">
-              <FaLock color="#9ca3af" />
-            </div>
-          </label>
-          <button
-            type="submit"
-            className="h-9 w-full text-sm text-white select-none font-semibold mt-8 bg-blue-500 hover:bg-blue-600 rounded-full transition-all duration-200 hover:shadow-lg"
-          >
-            Create account
-          </button>
-        </form>
-      ) : (
-        <form className="w-[28rem] p-12 bg-white border rounded-lg">
-          <b className="text-3xl select-none">Login</b>
-          <button
+      {formType === "login" && (
+        <Form title="Login">
+          <Button
             type="button"
-            className="h-9 w-full text-sm mt-8 font-semibold border border-gray-300 rounded-full transition-all duration-200 hover:shadow-md"
-          >
-            <div className="flex flex-row items-center justify-center">
-              <FcGoogle size={18} className="inline-block mr-1" />
-              Sign in with Google
-            </div>
-          </button>
+            title="Sign in with Google"
+            icon={<FcGoogle size={18} className="inline-block mr-1" />}
+            styles="border border-gray-300 hover:shadow-md"
+          />
           <div className="flex flex-row items-center justify-between my-4">
             <hr className="w-64" />
             <p className="w-full text-xs text-center text-gray-400 select-none mx-2">
@@ -95,86 +28,121 @@ export default function Home() {
             </p>
             <hr className="w-64" />
           </div>
-          <label className="flex flex-col text-xs font-semibold relative">
-            Email*
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your e-mail"
-              required
-              className="h-9 font-normal border border-gray-300 focus-visible:border-blue-500 focus-visible:outline-none rounded-2xl px-3 mt-1 transition-colors"
-            />
-            <div className="absolute right-3 top-1/2 translate-y-1">
-              <FaEnvelope color="#9ca3af" />
-            </div>
-          </label>
-          <label className="flex flex-col text-xs mt-4 font-semibold relative">
-            Password*
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-              required
-              className="h-9 font-normal border border-gray-300 focus-visible:border-blue-500 focus-visible:outline-none rounded-2xl px-3 mt-1 transition-colors"
-            />
-            <div className="absolute right-3 top-1/2 translate-y-1">
-              <FaLock color="#9ca3af" />
-            </div>
-          </label>
+          <Input
+            label="E-mail*"
+            name="email"
+            type="email"
+            placeholder="Enter your e-mail"
+            icon={<FaEnvelope color="#9ca3af" />}
+          />
+          <Input
+            label="Password*"
+            name="password"
+            type="password"
+            placeholder="Enter your password"
+            icon={<FaLock color="#9ca3af" />}
+            labelStyles="mt-4"
+          />
           <div className="flex flex-row items-center justify-between mt-2">
-            <div className="inline-flex items-center select-none">
-              <label className="flex items-center cursor-pointer relative hover:shadow-md transition-all">
-                <input
-                  type="checkbox"
-                  id="remember"
-                  className="peer h-5 w-5 cursor-pointer appearance-none rounded border border-gray-300 checked:bg-blue-500 checked:border-blue-500"
-                />
-                <span className="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-3.5 w-3.5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    stroke="currentColor"
-                    stroke-width="1"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </span>
-              </label>
-              <label
-                className="cursor-pointer ml-2 text-xs font-semibold"
-                htmlFor="remember"
-              >
-                Remember Me
-              </label>
-            </div>
-            <p className="font-bold text-blue-500 text-xs cursor-pointer hover:opacity-85 active:opacity-80 select-none">
+            <Checkbox title="Remember Me" id="remember" />
+            <span
+              onClick={() => setFormType("forgot_password")}
+              className="font-bold text-blue-500 text-xs cursor-pointer select-none transition-colors hover:text-blue-600 active:opacity-85"
+            >
               Forgot password?
-            </p>
+            </span>
           </div>
-          <button
+          <Button
             type="submit"
-            className="h-9 w-full text-sm text-white select-none font-semibold mt-8 bg-blue-500 hover:bg-blue-600 rounded-full transition-all duration-200 hover:shadow-lg"
-          >
-            Login
-          </button>
-          <p className="text-xs font-semibold text-center mt-2">
+            title="Login"
+            styles="text-white bg-blue-500 hover:bg-blue-600 hover:shadow-lg"
+          />
+          <p className="text-xs font-semibold text-center mt-2 select-none">
             Not registered?
-            <a
-              href="#"
-              onClick={() => setRegister(true)}
-              className="text-blue-500 hover:text-blue-600 transition-colors"
+            <span
+              onClick={() => setFormType("register")}
+              className="text-blue-500 cursor-pointer transition-colors hover:text-blue-600 active:opacity-85"
             >
               {" "}
               Create account
-            </a>
+            </span>
           </p>
-        </form>
+        </Form>
+      )}
+      {formType === "register" && (
+        <Form
+          title="Register"
+          icon={
+            <FaArrowLeft
+              size={21}
+              onClick={() => setFormType("login")}
+              className="cursor-pointer"
+            />
+          }
+        >
+          <Input
+            label="Name*"
+            name="name"
+            placeholder="Enter your name"
+            icon={<FaUser color="#9ca3af" />}
+            labelStyles="mt-8"
+          />
+          <Input
+            label="E-mail*"
+            name="email"
+            type="email"
+            placeholder="Enter your e-mail"
+            icon={<FaEnvelope color="#9ca3af" />}
+            labelStyles="mt-4"
+          />
+          <Input
+            label="Password*"
+            name="password"
+            type="password"
+            placeholder="Enter your password"
+            icon={<FaLock color="#9ca3af" />}
+            labelStyles="mt-4"
+          />
+          <Input
+            label="Confirm password*"
+            name="confirm-password"
+            type="password"
+            placeholder="Confirm your password"
+            icon={<FaLock color="#9ca3af" />}
+            labelStyles="mt-4"
+          />
+          <Button
+            type="submit"
+            title="Create account"
+            styles="text-white bg-blue-500 hover:bg-blue-600 hover:shadow-lg"
+          />
+        </Form>
+      )}
+      {formType === "forgot_password" && (
+        <Form
+          title="Password recovery"
+          icon={
+            <FaArrowLeft
+              size={21}
+              onClick={() => setFormType("login")}
+              className="cursor-pointer"
+            />
+          }
+        >
+          <Input
+            label="Email*"
+            name="email"
+            type="email"
+            placeholder="Enter your e-mail"
+            icon={<FaEnvelope color="#9ca3af" />}
+            labelStyles="mt-8"
+          />
+          <Button
+            type="submit"
+            title="Recover password"
+            styles="text-white bg-blue-500 hover:bg-blue-600 hover:shadow-lg"
+          />
+        </Form>
       )}
     </div>
   );
