@@ -1,4 +1,5 @@
 import { FaLock, FaUser } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 
 export default function Home() {
   return (
@@ -32,13 +33,22 @@ export default function Home() {
           </div>
         </label>
         <p className="text-end font-bold text-blue-500 mt-2 text-xs cursor-pointer hover:opacity-85 active:opacity-80">
-          Forgot your password?
+          Forgot password?
         </p>
         <button
           type="submit"
-          className="h-9 w-full text-white mt-8 bg-blue-500 hover:bg-blue-600 rounded-full transition-all duration-200 hover:shadow-lg"
+          className="h-9 w-full text-sm text-white font-semibold mt-8 bg-blue-500 hover:bg-blue-600 rounded-full transition-all duration-200 hover:shadow-lg"
         >
           Login
+        </button>
+        <button
+          type="submit"
+          className="h-9 w-full text-sm mt-4 font-semibold border border-gray-300 rounded-full transition-all duration-200 hover:shadow-md"
+        >
+          <div className="flex flex-row items-center justify-center">
+            <FcGoogle size={18} className="inline-block mr-1" />
+            Sign in with Google
+          </div>
         </button>
       </form>
     </div>
