@@ -5,8 +5,24 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-slate-200">
       <form className="w-[28rem] p-12 bg-white border rounded-lg">
-        <b className="text-3xl">Login</b>
-        <label className="flex flex-col text-xs mt-8 font-bold relative">
+        <b className="text-3xl select-none">Login</b>
+        <button
+          type="button"
+          className="h-9 w-full text-sm mt-8 font-semibold border border-gray-300 rounded-full transition-all duration-200 hover:shadow-md"
+        >
+          <div className="flex flex-row items-center justify-center">
+            <FcGoogle size={18} className="inline-block mr-1" />
+            Sign in with Google
+          </div>
+        </button>
+        <div className="flex flex-row items-center justify-between my-3">
+          <hr className="w-64" />
+          <p className="w-full text-xs text-center text-gray-400 select-none mx-2">
+            or Sign in with email
+          </p>
+          <hr className="w-64" />
+        </div>
+        <label className="flex flex-col text-xs font-bold relative">
           Email*
           <input
             type="email"
@@ -33,12 +49,12 @@ export default function Home() {
           </div>
         </label>
         <div className="flex flex-row items-center justify-between mt-2">
-          <div className="inline-flex items-center">
-            <label className="flex items-center cursor-pointer relative">
+          <div className="inline-flex items-center select-none">
+            <label className="flex items-center cursor-pointer relative hover:shadow-md transition-all">
               <input
                 type="checkbox"
                 id="remember"
-                className="peer h-5 w-5 cursor-pointer transition-all appearance-none rounded shadow hover:shadow-md border border-slate-300 checked:bg-blue-500 checked:border-blue-500"
+                className="peer h-5 w-5 cursor-pointer appearance-none rounded border border-gray-300 checked:bg-blue-500 checked:border-blue-500"
               />
               <span className="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 <svg
@@ -64,21 +80,15 @@ export default function Home() {
               Remember Me
             </label>
           </div>
-          <p className="font-bold text-blue-500 text-xs cursor-pointer hover:opacity-85 active:opacity-80">
+          <p className="font-bold text-blue-500 text-xs cursor-pointer hover:opacity-85 active:opacity-80 select-none">
             Forgot password?
           </p>
         </div>
         <button
           type="submit"
-          className="h-9 w-full text-sm text-white font-semibold mt-8 bg-blue-500 hover:bg-blue-600 rounded-full transition-all duration-200 hover:shadow-lg"
+          className="h-9 w-full text-sm text-white select-none font-semibold mt-8 bg-blue-500 hover:bg-blue-600 rounded-full transition-all duration-200 hover:shadow-lg"
         >
           Login
-        </button>
-        <button className="h-9 w-full text-sm mt-4 font-semibold border border-gray-300 rounded-full transition-all duration-200 hover:shadow-md">
-          <div className="flex flex-row items-center justify-center">
-            <FcGoogle size={18} className="inline-block mr-1" />
-            Sign in with Google
-          </div>
         </button>
       </form>
     </div>
