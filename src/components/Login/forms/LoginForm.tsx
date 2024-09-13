@@ -1,7 +1,7 @@
 import { FcGoogle } from "react-icons/fc";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import { SubmitHandler, useFormContext } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "../Button";
 import { Form } from "../Form";
@@ -31,6 +31,10 @@ export const LoginForm = ({ setFormType }: Props) => {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    reset();
+  }, [reset]);
 
   return (
     <Form onSubmit={handleLogin} title="Login">

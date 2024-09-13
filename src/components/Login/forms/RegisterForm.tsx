@@ -1,5 +1,6 @@
 import { FaArrowLeft, FaEnvelope, FaLock, FaUser } from "react-icons/fa";
-import { SubmitHandler } from "react-hook-form";
+import { SubmitHandler, useFormContext } from "react-hook-form";
+import { useEffect } from "react";
 
 import { Form } from "../Form";
 import { Input } from "../Input";
@@ -11,7 +12,13 @@ type Props = {
 };
 
 export const RegisterForm = ({ setFormType }: Props) => {
+  const { reset } = useFormContext<Inputs>();
+
   const handleRegister: SubmitHandler<Inputs> = () => {};
+
+  useEffect(() => {
+    reset();
+  }, [reset]);
 
   return (
     <Form

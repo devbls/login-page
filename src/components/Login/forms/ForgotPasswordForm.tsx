@@ -1,17 +1,24 @@
 import { FaArrowLeft, FaEnvelope } from "react-icons/fa";
-import { SubmitHandler } from "react-hook-form";
+import { SubmitHandler, useFormContext } from "react-hook-form";
 
 import { Form } from "../Form";
 import { Input } from "../Input";
 import { Button } from "../Button";
 import { Inputs } from "../types";
+import { useEffect } from "react";
 
 type Props = {
   setFormType: (type: string) => void;
 };
 
 export const ForgotPasswordForm = ({ setFormType }: Props) => {
+  const { reset } = useFormContext<Inputs>();
+
   const handleRecovery: SubmitHandler<Inputs> = () => {};
+
+  useEffect(() => {
+    reset();
+  }, [reset]);
 
   return (
     <Form
