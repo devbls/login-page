@@ -1,17 +1,22 @@
-import { HTMLAttributes } from "react";
+import { useFormContext } from "react-hook-form";
+
+import { Inputs, InputValues } from "./types";
 
 type Props = {
   title: string;
-  id: HTMLAttributes<HTMLInputElement>["id"];
+  id: InputValues;
 };
 
 export const Checkbox = ({ title, id }: Props) => {
+  const { register } = useFormContext<Inputs>();
+
   return (
     <div className="inline-flex items-center select-none">
       <label className="flex items-center cursor-pointer relative hover:shadow-md transition-all">
         <input
           type="checkbox"
           id={id}
+          {...register(id)}
           className="peer h-5 w-5 cursor-pointer appearance-none rounded border border-gray-300 checked:bg-blue-500 checked:border-blue-500"
         />
         <span className="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
