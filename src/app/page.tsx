@@ -1,19 +1,12 @@
-"use client";
-import { useState } from "react";
+import type { Metadata } from "next";
 
-import { RegisterForm } from "@/components/Login/forms/RegisterForm";
-import { ForgotPasswordForm } from "@/components/Login/forms/ForgotPasswordForm";
-import { LoginForm } from "@/components/Login/forms/LoginForm";
-export default function Login() {
-  const [formType, setFormType] = useState("login");
+import Login from "./login";
 
-  return (
-    <div className="flex flex-col items-center justify-center h-screen bg-slate-200">
-      {formType === "login" && <LoginForm setFormType={setFormType} />}
-      {formType === "register" && <RegisterForm setFormType={setFormType} />}
-      {formType === "forgot_password" && (
-        <ForgotPasswordForm setFormType={setFormType} />
-      )}
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "Login",
+  description: "This is the login page",
+};
+
+export default function LoginPage() {
+  return <Login />;
 }

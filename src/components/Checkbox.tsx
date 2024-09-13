@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 
-import { Inputs, InputValues } from "./types";
+import { Inputs, InputValues } from "./Login/types";
 
 type Props = {
   title: string;
