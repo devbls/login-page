@@ -2,11 +2,12 @@ import { FcGoogle } from "react-icons/fc";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import { SubmitHandler, useFormContext } from "react-hook-form";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
-import { Button } from "../Button";
-import { Form } from "../Form";
-import { Input } from "../Input";
-import { Checkbox } from "../Checkbox";
+import { Form } from ".";
+import { Button } from "../../Button";
+import { Input } from "../../Input";
+import { Checkbox } from "../../Checkbox";
 import { Inputs } from "../types";
 
 type Props = {
@@ -16,16 +17,20 @@ type Props = {
 export const LoginForm = ({ setFormType }: Props) => {
   const [loading, setLoading] = useState(false);
 
-  const { reset } = useFormContext<Inputs>();
+  const { reset, watch } = useFormContext<Inputs>();
+
+  const { push } = useRouter();
 
   const handleLogin: SubmitHandler<Inputs> = async () => {
     setLoading(true);
 
+    const email = watch("email");
+
     try {
       setTimeout(() => {
+        push(`/home?email=${email}`);
         setLoading(false);
         reset(undefined, { keepDefaultValues: true });
-        alert("Login successfull!");
       }, 2000);
     } catch (err) {
       console.log(err);

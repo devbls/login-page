@@ -1,11 +1,11 @@
 import { FaArrowLeft, FaEnvelope } from "react-icons/fa";
 import { SubmitHandler, useFormContext } from "react-hook-form";
-
-import { Form } from "../Form";
-import { Input } from "../Input";
-import { Button } from "../Button";
-import { Inputs } from "../types";
 import { useEffect } from "react";
+
+import { Form } from ".";
+import { Input } from "../../Input";
+import { Button } from "../../Button";
+import { Inputs } from "../types";
 
 type Props = {
   setFormType: (type: string) => void;

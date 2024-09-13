@@ -1,7 +1,7 @@
 import { ReactElement, ReactNode } from "react";
 import { SubmitHandler, useFormContext } from "react-hook-form";
 
-import { Inputs } from "./types";
+import { Inputs } from "../types";
 
 type Props = {
   children: ReactNode;

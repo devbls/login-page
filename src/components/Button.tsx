@@ -7,6 +7,7 @@ type Props = {
   icon?: ReactElement;
   styles: string;
   loading?: boolean;
+  onClick?: () => void;
 };
 
 export const Button = ({
@@ -15,6 +16,7 @@ export const Button = ({
   icon,
   styles,
   loading = false,
+  onClick = () => {},
 }: Props) => {
   const handleInnerContent = () => {
     if (loading)
@@ -42,6 +44,7 @@ export const Button = ({
   return (
     <button
       type={type}
+      onClick={onClick}
       className={`h-9 w-full text-sm select-none font-semibold mt-8 rounded-full transition-all duration-200 ${styles}`}
     >
       <div className="flex flex-row items-center justify-center">
